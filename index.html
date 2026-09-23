@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="iEat — современная доставка еды из лучших ресторанов." />
+  <title>iEat — Доставка любимой еды</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .logo{display:flex;align-items:center;gap:5px}
+    .logo-chef{font-size:27px;line-height:1}
+    .login-box h2{margin:5px 0 0}
+    .login-heading{display:flex;align-items:center;gap:14px;margin-bottom:25px}
+    .login-chef{font-size:42px}
+    .login-box label{display:block;font-size:13px;font-weight:700;margin:14px 0 7px}
+    .login-box input{width:100%;border:1px solid var(--line);border-radius:10px;padding:13px;font:inherit;outline:0}
+    .login-box input:focus{border-color:var(--accent)}
+    .login-error{min-height:20px;color:#d33;font-size:13px;margin:10px 0 0}
+    .login-hint{color:#888;font-size:12px;text-align:center;margin:15px 0 0}
+    .profile-box{max-height:90vh;overflow:auto}.profile-box h2{margin:5px 0 18px}.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.profile-grid .full-field{grid-column:1/-1}.profile-box label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}.profile-box input{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;outline:0}.profile-box input:focus{border-color:var(--accent)}.profile-summary{background:var(--light);border-radius:12px;padding:14px;margin:10px 0 16px}.profile-summary p{margin:5px 0;color:#666;font-size:13px}.profile-section-title{font-size:15px;margin:20px 0 4px}.orders-empty{color:#888;font-size:13px}.order-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px}.remove-item{border:0;background:#fff0ed;color:#d4482d;border-radius:7px;padding:5px 8px;cursor:pointer;font-size:12px}
+    .food-photo{width:58px;height:58px;object-fit:cover;border-radius:12px}
+    .restaurant-img{height:150px;width:100%;display:block;object-fit:cover;background:#f2ede9}
+    .dish-img{height:160px;width:100%;object-fit:cover;background:#f5f2ef;border-radius:13px;display:block}
+    .plate{position:absolute;width:300px;height:300px;right:75px;top:115px;object-fit:cover;border-radius:50%;transform:rotate(-8deg);filter:drop-shadow(0 20px 20px #0003)}
+    .cta-icon{width:170px;height:170px;border-radius:50%;object-fit:cover}
+    .map-box{margin-top:16px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 35px #00000010;max-width:570px;height:220px;background:#e8eee8}
+    .map-box iframe{width:100%;height:100%;border:0;display:block}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="iEat — главная"><span class="logo-chef" aria-hidden="true">🧑‍🍳</span>iEat</a>
+      <nav class="nav-links">
+        <a href="#restaurants">Рестораны</a><a href="#menu">Меню</a><a href="#how">Как это работает</a><a href="#about">О нас</a>
+      </nav>
+      <div class="nav-actions"><button class="icon-btn" id="searchBtn" aria-label="Поиск">⌕</button><button class="cart-btn" id="cartBtn">🛒 <b id="cartCount">0</b></button><button class="login-btn" id="loginBtn">Войти</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">ДОСТАВКА ЕДЫ РЯДОМ С ВАМИ</div>
+          <h1>Залетай за<br><em>вкусом.</em> iEat.</h1>
+          <p>Любимые блюда из лучших ресторанов — прямо к вашей двери.</p>
+          <div class="search-box"><span>📍</span><input id="addressInput" placeholder="Введите адрес в Худжанде" autocomplete="street-address"/><button id="findBtn">Найти еду</button></div>
+          <div class="map-box" aria-label="Карта города Худжанда"><iframe title="Карта города Худжанда" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=69.5700%2C40.2500%2C69.7000%2C40.3300&amp;layer=mapnik&amp;marker=40.2833%2C69.6333"></iframe></div>
+          <div class="hero-stats"><div><strong>50+</strong><small>ресторанов</small></div><div><strong>30 мин</strong><small>средняя доставка</small></div><div><strong>4.9 ★</strong><small>рейтинг</small></div></div>
+        </div>
+        <div class="hero-art"><div class="blob"></div><div class="food-card main-food"><img class="food-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=160&amp;q=85" alt="Бургер BBQ"><div><b>Бургер BBQ</b><span>от 25 сомони</span></div><button onclick="addToCart('Бургер BBQ',25)">+</button></div><div class="floating-card">⚡ <b>Доставка за 30 мин</b></div><img class="plate" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&amp;fit=crop&amp;w=500&amp;q=85" alt="Картофель фри"></div>
+      </div>
+    </section>
+
+    <section class="section" id="restaurants"><div class="container"><div class="section-head"><div><span class="kicker">ПОПУЛЯРНОЕ</span><h2>Рестораны рядом</h2></div><button class="outline-btn">Смотреть все →</button></div><div class="restaurant-grid" id="restaurantGrid"></div></div></section>
+
+    <section class="section light" id="menu"><div class="container"><div class="section-head"><div><span class="kicker">ЧТО ХОЧЕТСЯ?</span><h2>Выбирайте по вкусу</h2></div></div><div class="category-row"><button class="cat active" data-category="all">Всё</button><button class="cat" data-category="pizza">Пицца</button><button class="cat" data-category="burger">Бургеры</button><button class="cat" data-category="sushi">Суши</button><button class="cat" data-category="asian">Азия</button><button class="cat" data-category="dessert">Десерты</button></div><div class="dish-grid" id="dishGrid"></div></div></section>
+
+    <section class="how" id="how"><div class="container"><div class="center-head"><span class="kicker">ПРОСТО И УДОБНО</span><h2>Как работает iEat?</h2></div><div class="steps"><div><span>01</span><h3>Выберите</h3><p>Найдите ресторан и любимые блюда.</p></div><div><span>02</span><h3>Закажите</h3><p>Добавьте блюда в корзину и оформите заказ.</p></div><div><span>03</span><h3>Получите</h3><p>Курьер привезёт горячую еду к вашей двери.</p></div></div></div></section>
+
+    <section class="cta" id="about"><div class="container cta-inner"><div><span class="kicker">iEAT ДЛЯ БИЗНЕСА</span><h2>Ваш ресторан может быть<br>на iEat</h2><p>Подключайтесь к платформе и получайте больше заказов.</p><button class="primary-btn">Стать партнёром</button></div><img class="cta-icon" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=400&amp;q=85" alt="Свежий салат"></div></section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="logo" href="#" aria-label="iEat — главная"><span class="logo-chef" aria-hidden="true">🧑‍🍳</span>iEat</a><p>© 2026 iEat. Доставка еды с любовью.</p><div><a href="#">Поддержка</a><a href="#">Условия</a><a href="#">Политика</a></div></div></footer>
+
+  <div class="modal" id="cartModal"><div class="modal-box"><button class="close" id="closeCart">×</button><h2>Ваша корзина</h2><div id="cartItems"></div><div class="cart-total"><span>Итого</span><b id="cartTotal">0 сомони</b></div><button class="primary-btn full" id="checkoutBtn">Оформить заказ</button></div></div>
+  <div class="modal" id="loginModal"><div class="modal-box login-box"><button class="close" id="closeLogin" aria-label="Закрыть">×</button><div class="login-heading"><span class="login-chef" aria-hidden="true">🧑‍🍳</span><div><span class="kicker">ДОБРО ПОЖАЛОВАТЬ</span><h2>Войти в iEat</h2></div></div><form id="loginForm"><label for="loginName">Ваше имя</label><input id="loginName" name="name" autocomplete="name" placeholder="Например, Мухаммад" required><label for="loginEmail">Электронная почта</label><input id="loginEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><label for="loginPhone">Телефон</label><input id="loginPhone" name="phone" type="tel" autocomplete="tel" placeholder="+992 900000000" required><label for="loginAddress">Адрес доставки</label><input id="loginAddress" name="address" autocomplete="street-address" placeholder="Худжанд, улица..." required><label for="loginPassword">Пароль</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Не менее 6 символов" minlength="6" required><p class="login-error" id="loginError" role="alert"></p><button class="primary-btn full" type="submit">Войти</button></form><p class="login-hint">Данные профиля сохраняются только в этом браузере.</p></div></div>
+  <div class="modal" id="profileModal"><div class="modal-box profile-box"><button class="close" id="closeProfile" aria-label="Закрыть">×</button><span class="kicker">ЛИЧНЫЙ КАБИНЕТ</span><h2>Мой профиль</h2><div class="profile-summary"><strong id="profileSummaryName"></strong><p id="profileSummaryEmail"></p></div><form id="profileForm"><div class="profile-grid"><div><label for="profileName">Имя</label><input id="profileName" required></div><div><label for="profilePhone">Телефон</label><input id="profilePhone" type="tel" required></div><div class="full-field"><label for="profileAddress">Адрес доставки</label><input id="profileAddress" required></div></div><p class="login-error" id="profileError" role="alert"></p><button class="primary-btn full" type="submit">Сохранить данные</button></form><h3 class="profile-section-title">История заказов</h3><div id="orderHistory"></div><button class="outline-btn full" id="logoutBtn" type="button">Выйти из аккаунта</button></div></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
