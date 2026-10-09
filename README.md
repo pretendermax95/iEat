@@ -61,3 +61,11 @@ HTTPS и производственный сервер вместо станда
 - `index.html`, `css/style.css`, `js/app.js` — интерфейс
 - `images/` — локальные SVG-иллюстрации
 - `tests/` — проверки API и пользовательских сценариев
+
+## Android APK
+
+Автономная Android-версия: [iEat-1.0.0-debug.apk](releases/iEat-1.0.0-debug.apk).
+Android 8.0+ с актуальным Android System WebView. Не требует веб-сервера;
+аккаунты и тестовые заказы сохраняются только на устройстве и не синхронизируются
+с веб-версией. Это development-сборка, не версия для Google Play.
+Сборка и ограничения описаны в [android/README.md](android/README.md).
